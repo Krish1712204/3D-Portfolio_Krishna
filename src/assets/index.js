@@ -8,12 +8,12 @@ import github from "./github.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
 
-import msfabric from "./skills/msfabric.png";
-import photoshop from "./skills/photoshop.png";
-import powerbi from "./skills/powerbi.png";
-import python from "./skills/python.png";
-import sql from "./skills/sql.png";
-import ai from "./skills/ai.png";
+import msfabric from "./Skills/msfabric.png";
+import photoshop from "./Skills/photoshop.png";
+import powerbi from "./Skills/powerbi.png";
+import python from "./Skills/python.png";
+import sql from "./Skills/sql.png";
+import ai from "./Skills/ai.png";
 
 import css from "./tech/css.png";
 import docker from "./tech/docker.png";
