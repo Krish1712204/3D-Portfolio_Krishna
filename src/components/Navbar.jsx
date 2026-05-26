@@ -39,10 +39,10 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <img src={logo} alt='logo' className='w-9 h-9 object-contain' />
-          <p className='text-white text-[18px] font-bold cursor-pointer flex whitespace-nowrap items-center'>
-            Krishna &nbsp;
-            <span className='sm:inline-block hidden whitespace-nowrap'> | Shelar Portfolio</span>
+          <img src={logo} alt='logo' className='w-6 h-6 sm:w-8 sm:h-8 object-contain' />
+          <p className='text-white text-[15px] sm:text-[18px] font-bold cursor-pointer flex whitespace-nowrap items-center'>
+            Krishna Shelar &nbsp;
+            <span className='sm:inline-block hidden whitespace-nowrap'> | Portfolio</span>
           </p>
         </Link>
 
