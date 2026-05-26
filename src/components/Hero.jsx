@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
@@ -5,13 +6,29 @@ import { ComputersCanvas } from "./canvas";
 import profileImg from "../assets/prof.jpg";
 
 const Hero = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+    setIsMobile(mediaQuery.matches);
+
+    const handleMediaQueryChange = (event) => {
+      setIsMobile(event.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleMediaQueryChange);
+    return () => {
+      mediaQuery.removeEventListener("change", handleMediaQueryChange);
+    };
+  }, []);
+
   return (
     <section className={`relative w-full h-screen mx-auto`}>
       <div
-        className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row justify-between items-start gap-5`}
+        className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-col md:flex-row justify-between items-center md:items-start gap-5`}
       >
         {/* Left Side: Greeting Line & Text */}
-        <div className='flex flex-row items-start gap-5'>
+        <div className='flex flex-row items-start gap-5 w-full md:w-auto'>
           <div className='flex flex-col justify-center items-center mt-5'>
             <div className='w-5 h-5 rounded-full bg-[#915EFF]' />
             <div className='w-1 sm:h-80 h-40 violet-gradient' />
@@ -29,7 +46,7 @@ const Hero = () => {
 
         {/* Right Side: Interactive HTML Profile Photo Overlay */}
         <motion.div 
-          className='z-10 hidden md:flex items-center justify-center mt-6 mr-4 lg:mr-8'
+          className='z-10 flex items-center justify-center mt-6 md:mt-0 md:mr-4 lg:mr-8'
           whileHover={{ 
             scale: 1.1,
             y: [0, -10, 0], // gentle hover bounce
@@ -51,7 +68,7 @@ const Hero = () => {
             }
           }}
         >
-          <div className='w-[170px] h-[170px] lg:w-[210px] lg:h-[210px] rounded-full p-[3px] bg-[#915EFF] shadow-lg shadow-[#915EFF]/40 flex items-center justify-center cursor-pointer overflow-hidden transition-all duration-300 hover:bg-[#b197fc] hover:shadow-[#b197fc]/60'>
+          <div className='w-[140px] h-[140px] sm:w-[170px] sm:h-[170px] lg:w-[210px] lg:h-[210px] rounded-full p-[3px] bg-[#915EFF] shadow-lg shadow-[#915EFF]/40 flex items-center justify-center cursor-pointer overflow-hidden transition-all duration-300 hover:bg-[#b197fc] hover:shadow-[#b197fc]/60'>
             <div 
               className='w-full h-full rounded-full'
               style={{
@@ -65,7 +82,7 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      <ComputersCanvas />
+      {!isMobile && <ComputersCanvas />}
 
       <div className='absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center'>
         <a href='#about'>
