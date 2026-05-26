@@ -1,5 +1,5 @@
 import React from "react";
-import Tilt from "react-tilt";
+import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
@@ -11,17 +11,12 @@ const ServiceCard = ({ index, title, subtitle, icon }) => {
   const isEmoji = typeof icon === "string" && icon.length <= 4;
 
   return (
-    <Tilt className='w-full'>
+    <Tilt className='w-full' tiltMaxAngleX={45} tiltMaxAngleY={45} scale={1} transitionSpeed={450}>
       <motion.div
         variants={fadeIn("right", "spring", index * 0.5, 0.75)}
         className='w-full rgb-hover-card shadow-card'
       >
         <div
-          options={{
-            max: 45,
-            scale: 1,
-            speed: 450,
-          }}
           className='relative z-[1] bg-tertiary rounded-[20px] py-5 px-6 min-h-[280px] flex justify-evenly items-center flex-col'
         >
           {isEmoji ? (
